@@ -1,0 +1,55 @@
+ALTER VIEW dbo.v_prod_info_eb_zmd_axel
+AS
+WITH I0 AS (
+    SELECT  i.*,
+            ROW_NUMBER() OVER (
+                PARTITION BY i.id_pm
+                ORDER BY COALESCE(i.lr_date,'19000101') DESC, i.id_olt, i.id_nro
+            ) AS rn
+    FROM prod.dbo.prod_pm_info AS i
+    WHERE i.zone <> 'ZTD'
+),
+I AS (  -- exactly 1 row per id_pm
+    SELECT id_pm, partenaire_ff, splitter_c1, splitter_c2, splitter_c0, pon_paths,
+           capa_increase, port_libre, port_total, lr_cible, lr_date, id_nro,
+           etat_last_projet, id_olt
+    FROM I0
+    WHERE rn = 1
+)
+SELECT
+    I.id_pm,
+    I.partenaire_ff, I.splitter_c1, I.splitter_c2, I.splitter_c0, I.pon_paths,
+    I.capa_increase, I.port_libre, I.port_total, I.lr_cible, I.lr_date, I.id_nro,
+    I.etat_last_projet,
+    JAK.Etat,
+    JAK.[Date Operation],
+    NC.calibre_pm,
+    NC.occupation,
+    NC.partenaire_fiabilise,
+    NRO.nb_pm_occup_sup_75,
+    NRO.id_nra,
+    NRO.Ports_dispo_ff
+FROM I
+OUTER APPLY (   -- choose 1 nc_pm row per id_pm
+    SELECT TOP (1)
+           nc.id_nro, nc.calibre_pm, nc.occupation, nc.partenaire_fiabilise
+    FROM Network_Configuration.dbo.nc_pm AS nc
+    WHERE nc.id_pm = I.id_pm
+    ORDER BY COALESCE(nc.occupation,0) DESC, nc.id_nro
+) AS NC
+OUTER APPLY (   -- choose 1 nc_nro row; prefer direct id_nro over id_nro_prdm; require installed cards
+    SELECT TOP (1)
+           n.nb_pm_occup_sup_75, n.Ports_dispo_ff, n.id_nra
+    FROM Network_Configuration.dbo.nc_nro AS n
+    WHERE (n.id_nro = NC.id_nro OR n.id_nro_prdm = NC.id_nro)
+      AND n.[Ports_installés] > 0
+    ORDER BY CASE WHEN n.id_nro = NC.id_nro THEN 0 ELSE 1 END, n.id_nro
+) AS NRO
+OUTER APPLY (   -- latest Jakarta event per OLT
+    SELECT TOP (1)
+           j.Etat, j.[Date Operation]
+    FROM STG_BO.dbo.stg_bo_gcr_swap_jakarta AS j
+    WHERE j.[Element Conf] = I.id_olt
+    ORDER BY j.[Date Operation] DESC, j.Etat
+) AS JAK;
+GO
