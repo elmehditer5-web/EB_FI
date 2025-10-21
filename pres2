@@ -1,0 +1,96 @@
+Slide 1 — EB ZMD, de l’attente à la vélocité ⚡
+
+Headline
+34 min → ~45 s par exécution | ≈45× plus rapide | ~98 % de temps gagné
+
+Ce qui change (3 victoires nettes)
+
+Vitesse: pipeline optimisé, I/O rationalisés, calculs ciblés.
+
+Flexibilité: règles métiers externalisées en JSON/YAML modifiables sans recoder.
+
+Maintenabilité: structure modulaire, logs clairs, documentation condensée.
+
+Avant / Après (tableau punchy)
+
+Indicateur	Avant (ancien script)	Après (nouveau script)	Impact
+Temps d’exécution	34:00	00:40–00:50	≈45× plus rapide
+Gestion des règles	Codées en dur	JSON/YAML externes	+Agilité / +Traçabilité
+Portabilité	Spécifique ZMD	Générique multi‑contextes	+Réutilisation
+Qualité de sortie	Non instrumentée	Écarts détectés & tracés	+Fiabilité
+Charge manuelle	Élevée	Quasi nulle	Heures sauvées / mois*
+
+*Estimation dépend du nombre d’exécutions mensuelles; p.ex. 20 runs/mois ≈ 11 h économisées.
+
+Schéma visuel suggéré (Canvas)
+Entrées ➜ Règles JSON/YAML ➜ Traitement optimisé ➜ Sorties EB
+Icônes: ⏱️ (temps), ⚙️ (automatisation), 🧩 (modularité)
+
+Slide 2 — Validation, Confiance & Décision 🚦
+
+Validation en cours (mesurable)
+
+Comparateur ancien vs nouveau par id_pm avec:
+• Taux de mismatches global et par règle
+• Localisation des écarts (champ, valeur, règle appliquée)
+• Exports CSV/Excel + log d’investigation
+
+Ce que révèle la validation
+
+Mise en évidence d’anomalies héritées de l’ancien script.
+
+Traçabilité complète des décisions de règles (avant/après).
+
+KPI de qualité visés
+
+Parité fonctionnelle ≥ seuil métier sur échantillon représentatif.
+
+Taux d’écarts ≤ seuil métier et écarts expliqués/acceptés.
+
+Zéro régression sur cas critiques.
+
+Impacts business (condensé)
+
+Productivité: temps libéré pour l’analyse, pas pour attendre un batch.
+
+Qualité: décisions EB plus fiables, moins de retravail.
+
+Time‑to‑change: adaptation des règles en minutes, pas en sprints.
+
+Décision & Next Steps
+
+Clore l’investigation des mismatches et ajuster règles/config si nécessaire.
+
+Dry‑run E2E sur lot complet, capturer métriques (temps, écarts, logs).
+
+Go/No‑Go avec métier (seuils atteints, PV de validation signé).
+
+Go‑Live: runbook, rollback, monitoring (temps d’exécution, taux d’écarts).
+
+Itérations courtes post‑mise en service pour affiner règles et perfs.
+
+Visuels Canvas
+
+Timeline compacte: Validation → Dry‑run → Go‑Live → Stabilisation
+
+Badges KPI: ⏱️ 45× | ✅ Parité | 🧪 Zéro régression | 📈 Mismatches ≤ seuil
+
+Slide 3 (option) — Roadmap & Monitoring 📈
+
+Roadmap
+
+Semaine 1: corrections ciblées + re‑run comparatif
+
+Semaine 2: dry‑run E2E + préparation Go‑Live
+
+Semaine 3: Go‑Live contrôlé + hypercare
+
+Monitoring continu (tableau de bord)
+
+Temps d’exécution (p95)
+
+Taux de mismatches (global / par règle)
+
+Volume traité (# id_pm)
+
+Changelog des règles (JSON/YAML)
