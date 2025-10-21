@@ -1,0 +1,36 @@
+Introduction
+« Bonjour à tous, je m’appelle Elmehdi, je suis Data Analyst au sein de l’équipe TAF-I Horizon. Depuis mon arrivée, mon travail s’inscrit dans une logique claire : accélérer l’automatisation, réduire les interventions manuelles et poser les bases d’un réseau de plus en plus autonome et intelligent. »
+
+1. Activités & Périmètre
+« L’objectif principal de mon périmètre est d’automatiser au maximum les processus critiques pour gagner en fiabilité, en rapidité et en scalabilité.
+
+Je veille d’abord à garantir l’intégrité et la mise à jour continue des données TAF-L, essentielles pour automatiser la prise de décision.
+
+Je mets en place des champs d’automatisation et de réseau autonome pour limiter les actions humaines dans les opérations quotidiennes.
+
+J’ai également structuré l’environnement de développement pour qu’il soit prêt à accueillir des flux automatisés et évolutifs.
+
+Enfin, la sécurisation des scripts d’import s’inscrit dans cette même logique : fiabiliser les traitements pour les rendre autonomes. »
+
+2. Réalisations et sujets en cours
+« Les réalisations concrètes suivent toutes ce fil conducteur d’automatisation :
+
+Nous avons d’abord séparé les environnements Production et Préproduction pour fiabiliser les déploiements et faciliter les mises à jour continues, un prérequis à tout système autonome.
+
+J’ai rédigé un guide d’utilisation de Git/GitLab afin d’industrialiser les pratiques de développement et d’optimiser la collaboration.
+
+Le projet phare reste l’automatisation de l’EB ZMD :
+
+Mise en place d’un système autonome de traitement des données KPPM dans les zones ZMD AMII et RIP.
+
+Conception d’un processus générique, évolutif et auto-adaptatif, qui demande un minimum d’intervention humaine et peut évoluer sans refonte lourde. »
+
+3. Perspectives
+« Les prochaines étapes vont encore plus loin dans cette vision d’un réseau automatisé :
+
+Renforcer la sécurisation des échanges de données entre Elixir et les VMs avec un serveur SFTP, pour que les flux deviennent plus sûrs et puissent être intégrés automatiquement dans les pipelines.
+
+Lancer l’automatisation complète du déclaratif énergie, afin d’éliminer les tâches manuelles récurrentes et fiabiliser toute la chaîne de bout en bout. »
+
+Conclusion
+« En résumé, tout ce travail vise à créer un écosystème où les processus sont intelligents, autonomes et évolutifs, permettant à l’équipe de se concentrer sur l’analyse stratégique plutôt que sur l’exécution opérationnelle. C’est une étape clé vers un réseau automatisé qui s’adapte, apprend et évolue sans dépendre d’interventions humaines constantes. »
