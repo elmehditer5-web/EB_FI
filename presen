@@ -1,0 +1,68 @@
+Slide 1 — Contexte & Objectif | Réalisations
+
+🎯 Contexte (ancien process)
+
+Exécution lente et instable, forte dépendance à des règles codées en dur.
+
+Complexité élevée, maintenance coûteuse, peu de généricité.
+
+🎯 Objectif
+
+Automatiser et fiabiliser l’EB en ZMD via une refonte du script, en réduisant la charge manuelle et en accélérant les cycles.
+
+🛠️ Réalisation clé
+
+Nouveau script optimisé pour l’EB ZMD.
+
+Règles métiers externalisées dans un fichier JSON/YAML modifiable sans recoder.
+
+Architecture générique et maintenable (prête pour d’autres zones/scénarios).
+
+📊 Avant / Après (indicateurs clés)
+
+Indicateur	Avant (ancien script)	Après (nouveau script)	Gain estimé
+Temps d’exécution	34 min	~40–50 s	~98 % plus rapide
+Maintenabilité	Règles en dur	Règles externes (JSON/YAML)	+Agilité / +Lisibilité
+Flexibilité	Faible (spécifique)	Générique multi‑contextes	+Réutilisation
+Qualité de sortie	Non mesurée	Écarts détectés et tracés	+Fiabilité
+Charge manuelle	Élevée	Quasi nulle	Heures gagnées / mois
+
+🖼️ Visuels suggérés: icône ⚙️ pour l’automatisation, schéma de flux « Entrées → Règles JSON/YAML → Traitement → Sorties EB », pictogrammes ⏱️ et 🧩.
+
+Slide 2 — Validation, Impacts & Next Steps
+
+🔍 Validation en cours
+
+Script de comparaison des sorties ligne à ligne par id_pm (ancien vs nouveau).
+
+Comptage des mismatches, localisation des écarts, mise en évidence d’anomalies héritées de l’ancien script.
+
+Tableau récap écarts par règle et log d’investigation.
+
+✅ Impacts déjà constatés
+
+Productivité: exécutions rapides, réduction forte du manuel.
+
+Qualité: détection proactive d’écarts et amélioration de la traçabilité.
+
+Time‑to‑change: ajustement des règles via fichiers de config sans déploiement.
+
+🚦Critères Go/No‑Go
+
+Taux d’écarts ≤ seuil défini et écarts expliqués/acceptés.
+
+Parité fonctionnelle validée sur un échantillon représentatif.
+
+Revue de code + validation métier signées.
+
+🚀 Prochaines étapes (ordonnancement)
+
+Finaliser l’analyse des mismatches et corriger les règles/config si besoin.
+
+Dry‑run E2E sur un lot complet et capture des métriques (temps, écarts, logs).
+
+Préparer déploiement prod: runbook, plan de rollback, monitoring et alerting.
+
+Itérations courtes post‑mise en service pour affiner règles et perfs.
+
+🖼️ Visuels suggérés: icône 🔍 pour le contrôle, 📈 pour l’impact, 🚀 pour le déploiement; mini timeline « Validation → Dry‑run → Go‑Live → Stabilisation ».
